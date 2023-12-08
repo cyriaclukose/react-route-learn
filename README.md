@@ -12,18 +12,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### step1:
 Step one is to wrap the entire application inside the <BrowserRouter> Component.
 Its a react context will pass the routing information to differnt components
-
+```html
 root.render(
 
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-
-
   </React.StrictMode>
-
 )
+``````
 
 ### step 2.
 
