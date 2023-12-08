@@ -2,6 +2,122 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## React Routes
+
+  react routes helps you to display different pages in a react application
+  we use a package called react-router-dom to achieve this in react web applications.
+
+  npm   install  react-router-dom
+
+### step1:
+Step one is to wrap the entire application inside the <BrowserRouter> Component.
+Its a react context will pass the routing information to differnt components
+
+root.render(
+
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
+
+  </React.StrictMode>
+
+)
+
+### step 2.
+
+In step 2 we have to  define the Routes and Route inside the parent app component
+
+The Routes component wraps different individual Routes to differnt pages
+
+   <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/books" element={<Booklist />} />
+    </Routes>
+here path determines the url and element defines the component which needs to be
+displayed
+
+### Step 3 
+let us create a navaigation bar . We can use a component called <Link> to 
+create links to different pages. the to attributes specifies the url
+for each page. We can see that when click the links the page is not rerendering
+the navigation bar remains constant
+<nav>
+<ul>
+<li><Link to="/">Home</Link>
+</li>
+<li>
+<Link to="/books">BookList<Link>
+</li>
+</ul>
+</nav>
+
+### Parameterised path
+
+we can define parameterised  and hardcoded path in Routes as shown
+below
+
+  <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/books" element={<Booklist />} />
+      <Route path="/books/:id" element={<Book />} />
+      <Route path="/books/new" element={<NewBook />} />
+    </Routes>
+
+    here 'id' represent a parameterised path. in New Book we have 
+    a hardcoded url path
+
+    In Booklist.js we can define the link to the different books as
+    shown below
+
+    
+import { Link } from "react-router-dom";
+
+function Booklist(){
+
+return (<>
+<h1>Displaying book List</h1>
+
+<ul>
+    <li><Link to="/books/1">Book1</Link></li>
+    <li><Link to="/books/2">BooK2</Link></li>
+    <li><Link to="/books/new">New Book</Link></li>
+</ul>
+
+</>);
+
+}
+
+export default Booklist;
+
+
+So in the Book.js we acceed the id by using the {useParams} hook from react-router-dom as shown below
+
+
+import { useParams} from "react-router-dom"
+
+
+function Book(){
+    const {id}=useParams();
+
+    return (<>
+    <h1>Book {id}Page</h1>
+    </>);
+}
+
+export default Book;
+
+### NotFoundPage
+
+ we can route to the pages not found to NotFound page by defing below
+ route in Rooutes
+
+ <Rooute page="*" element {<NotFound/>}/>
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
