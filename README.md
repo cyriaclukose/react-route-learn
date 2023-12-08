@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### step1:
 Step one is to wrap the entire application inside the <BrowserRouter> Component.
 Its a react context will pass the routing information to differnt components
-
+```html
 root.render(
 
   <React.StrictMode>
@@ -24,17 +24,19 @@ root.render(
   </React.StrictMode>
 
 )
+```
 
 ### step 2.
 
 In step 2 we have to  define the Routes and Route inside the parent app component
 
 The Routes component wraps different individual Routes to differnt pages
-
+```html
    <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/books" element={<Booklist />} />
     </Routes>
+ ```   
 here path determines the url and element defines the component which needs to be
 displayed
 
@@ -43,6 +45,7 @@ let us create a navaigation bar . We can use a component called <Link> to
 create links to different pages. the to attributes specifies the url
 for each page. We can see that when click the links the page is not rerendering
 the navigation bar remains constant
+```html
 <nav>
 <ul>
 <li><Link to="/">Home</Link>
@@ -52,26 +55,27 @@ the navigation bar remains constant
 </li>
 </ul>
 </nav>
-
+```
 ### Parameterised path
 
 we can define parameterised  and hardcoded path in Routes as shown
 below
 
+```html
   <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/books" element={<Booklist />} />
       <Route path="/books/:id" element={<Book />} />
       <Route path="/books/new" element={<NewBook />} />
     </Routes>
-
+```
     here 'id' represent a parameterised path. in New Book we have 
     a hardcoded url path
 
     In Booklist.js we can define the link to the different books as
     shown below
 
-    
+ ```html   
 import { Link } from "react-router-dom";
 
 function Booklist(){
@@ -91,10 +95,10 @@ return (<>
 
 export default Booklist;
 
-
+```
 So in the Book.js we acceed the id by using the {useParams} hook from react-router-dom as shown below
 
-
+```html
 import { useParams} from "react-router-dom"
 
 
@@ -108,13 +112,15 @@ function Book(){
 
 export default Book;
 
+```
 ### NotFoundPage
 
  we can route to the pages not found to NotFound page by defing below
  route in Rooutes
 
+```html
  <Rooute page="*" element {<NotFound/>}/>
-
+```
 
 
 
