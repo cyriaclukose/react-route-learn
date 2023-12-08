@@ -122,8 +122,30 @@ export default Book;
  <Rooute page="*" element {<NotFound/>}/>
 ```
 
+## nested routes 
+ We can combine the related pages or routes using nested routes
+ In our case we can nest all the routes starting path="/books"
+ as shown below
 
+we create a Route with the common path then nest the related 
+<Route> inside
 
+```html
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/books">
+      <Route index element={<Booklist />} />
+      <Route path=":id" element={<Book />} />
+      <Route path="new" element={<NewBook />} />
+      </Route>
+      <Route path="*" element={<NotFound/>}/>
+    </Routes>
+    </>
+ ```   
+
+the orginal page for path"/books" can be displayed with the help
+of Route with index attribute
 ## Available Scripts
 
 In the project directory, you can run:
