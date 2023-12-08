@@ -146,6 +146,46 @@ we create a Route with the common path then nest the related
 
 the orginal page for path"/books" can be displayed with the help
 of Route with index attribute
+
+
+### Layout
+ When we are using nested page we can move the links in the index 
+ page (=BookList page) to a seperate component called BookLayout 
+ and include as an element in the main nested route. So now in 
+ all the pages under the nested routes the links will appear
+ And to dispaly the content of each nested page we have to Include
+ and element call <Outlet> from 'react-router-dom'
+ BookLayout
+ ```html
+ 
+import { Link,Outlet } from "react-router-dom";
+function BookLayout(){
+
+
+    return(<>
+    <ul>
+    <li><Link to="/books/1">Book1</Link></li>
+    <li><Link to="/books/2">BooK2</Link></li>
+    <li><Link to="/books/new">New Book</Link></li>
+    <Outlet />
+     </ul>
+    </>);
+}
+
+export default BookLayout;
+ ```
+ ```html
+    <Routes>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/books" element={<BookLayout/>}>
+      <Route index element={<BookList />} />
+      <Route path=":id" element={<Book />} />
+      <Route path="new" element={<NewBook />} />
+      </Route>
+      <Route path="*" element={<NotFound/>}/>
+    </Routes>
+```
 ## Available Scripts
 
 In the project directory, you can run:
